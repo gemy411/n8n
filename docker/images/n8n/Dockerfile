@@ -1,7 +1,7 @@
 ARG NODE_VERSION=20
 FROM n8nio/base:${NODE_VERSION}
 
-ARG N8N_VERSION=latest
+ARG N8N_VERSION=1.90.0
 RUN if [ -z "$N8N_VERSION" ] ; then echo "The N8N_VERSION argument is missing!" ; exit 1; fi
 
 LABEL org.opencontainers.image.title="n8n"
