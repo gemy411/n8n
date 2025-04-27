@@ -1,0 +1,13 @@
+services: # Defines the application's services (containers)
+  n8n: # The name of the service
+    image: n8n:99  # The Docker image to use (same as in docker run)
+    container_name: n8n # Sets the container name (optional, equivalent to --name) [5]
+    restart: unless-stopped # Ensures the container restarts automatically unless manually stopped [4][5]
+    ports:
+      - "5678:5678" # Maps host port 5678 to container port 5678 (equivalent to -p) [1][5]
+    volumes:
+      - n8n_data:/home/node/.n8n # Mounts the named volume 'n8n_data' to the specified path inside the container (equivalent to -v) [1][5]
+        # This path is where n8n stores persistent data like workflows and credentials [1][8]
+
+volumes: # Top-level key to declare named volumes
+  n8n_data: {} # Declares the named volume 'n8n_data'. Docker Compose will create this volume if it doesn't exist, similar to 'docker volume create n8n_data' [5][4]
